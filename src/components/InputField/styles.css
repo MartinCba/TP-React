@@ -1,0 +1,16 @@
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .input-group label {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .input-group input {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  

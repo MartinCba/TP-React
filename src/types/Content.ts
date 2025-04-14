@@ -6,4 +6,5 @@ export type Content = {
   genero: string;
   rating: number;
   tipo: 'pelicula' | 'serie';
+  imagen?: string;
 };
