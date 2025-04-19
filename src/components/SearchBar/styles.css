@@ -1,0 +1,32 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-surface);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    min-width: 250px;
+}
+
+.search-bar:hover {
+    background-color: var(--color-background);
+}
+
+.search-bar input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
+    outline: none;
+}
+
+.search-bar input::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+}
+
+.search-bar input:focus {
+    background-color: var(--color-background);
+} 

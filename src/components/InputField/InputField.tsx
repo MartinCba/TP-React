@@ -1,16 +1,17 @@
 import React from 'react';
 import './styles.css';
 
+// Definición de las props que recibe el componente
 type InputFieldProps = {
-    label: string;
-    type: 'text' | 'number';
-    name: string;
-    value: string | number;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    required?: boolean;
-    min?: number;
-    max?: number;
-    placeholder?: string;
+    label: string; // Texto de la etiqueta que describe el campo
+    type: 'text' | 'number'; // Tipo de input: puede ser texto o número
+    name: string; // Nombre del input (también se usa como id)
+    value: string | number; // Valor actual del campo
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // Función que se ejecuta al cambiar el valor
+    required?: boolean; // Define si el campo es obligatorio (opcional, por defecto es false)
+    min?: number; // Valor mínimo permitido (opcional, usado en inputs numéricos)
+    max?: number; // Valor máximo permitido (opcional, usado en inputs numéricos)
+    placeholder?: string; // Texto de ayuda que aparece cuando el input está vacío (opcional)
 };
 
 const InputField: React.FC<InputFieldProps> = ({

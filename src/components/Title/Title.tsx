@@ -1,8 +1,9 @@
 import React from 'react';
 import './styles.css';
 
+// Define las props que recibe el componente
 type Props = {
-    text: string;
+    text: string; // Texto que se va a mostrar en el título
 };
 
 const Title: React.FC<Props> = ({ text }) => {

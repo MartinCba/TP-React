@@ -1,43 +1,191 @@
 .content-card {
-  border: 1px solid #ddd;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  width: 500px;         
-  min-height: 180px;    
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.content-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.content-card-header {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* Aspect ratio 16:9 */
+  overflow: hidden;
+}
+
+.content-card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+}
+
+.content-card:hover .content-card-image {
+  transform: scale(1.05);
+}
+
+.content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+}
+
+.content-card-info {
+  padding: 1.2rem;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  
+  gap: 1rem;
+}
+
+.content-main {
+  flex-grow: 1;
 }
 
 .content-card h3 {
-  margin: 0 0 0.5rem 0;
-  color: #333;
+  margin: 0 0 0.8rem 0;
+  color: var(--color-text);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.content-card .actions {
-  margin-top: 1rem;
+.content-details {
+  color: var(--color-text-secondary);
+}
+
+.content-details p {
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
   display: flex;
-  justify-content: flex-start;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.type-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  backdrop-filter: blur(4px);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background-color: var(--color-surface);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  color: var(--color-text);
+}
+
+.star {
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  justify-content: center;
+}
+
+.action-button.primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.action-button.secondary {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.action-button.danger {
+  background-color: var(--color-danger);
+  color: white;
+}
+
+.action-button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.action-button:active {
+  transform: translateY(0);
+}
+
+.button-icon {
+  font-size: 1.1rem;
+  line-height: 1;
 }
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 2rem;
-  padding: 2rem;
-  justify-content: center; 
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  align-items: stretch;
 }
+
 @media (max-width: 768px) {
   .cards-grid {
-    grid-template-columns: 1fr; 
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    padding: 1rem;
+    gap: 1rem;
   }
 
-  .content-card {
-    width: 90%; 
+  .content-card-info {
+    padding: 1rem;
+  }
+
+  .actions {
+    flex-direction: column;
   }
 }

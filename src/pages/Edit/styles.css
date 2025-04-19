@@ -1,0 +1,5 @@
+.submit-container {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: var(--spacing-lg);
+}
