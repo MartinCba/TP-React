@@ -21,6 +21,9 @@ Movie Tracker es una aplicación web desarrollada con React que permite gestiona
 - TypeScript
 - CSS Modules
 - LocalStorage para persistencia de datos
+- Lucide React (Iconos)
+- React Router DOM (Rutas)
+- UUID (Generación de IDs)
 
 ## ⚙️ Instalación
 
@@ -102,5 +105,4 @@ src/
 └── styles/        # Estilos globales
 ```
 
----
-Desarrollado para el [TP-React] de la materia [PWA]
+### Desarrollo del TP-React de la materia Programación Web Avanzada
