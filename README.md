@@ -1,54 +1,106 @@
-# React + TypeScript + Vite
+# 🎬 Movie Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 👥 Integrantes del Grupo
+- [Hernandez Martín FAI-4433]
+- [Metzger German FAI-3521]
+- [Bucarey Mateo FAI- 4319]
 
-Currently, two official plugins are available:
+## 📝 Descripción
+Movie Tracker es una aplicación web desarrollada con React que permite gestionar y hacer seguimiento de películas y series. Los usuarios pueden:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Agregar nuevas películas y series a su lista "Por Ver"
+- Marcar contenido como visto
+- Filtrar por género, tipo de contenido (película/serie) y búsqueda por título/director
+- Ordenar por año o rating
+- Ver estadísticas de su contenido
+- Editar o eliminar entradas
+- Persistencia de datos en localStorage
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologías Utilizadas
+- React
+- TypeScript
+- CSS Modules
+- LocalStorage para persistencia de datos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ⚙️ Instalación
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. Clonar el repositorio:
+```bash
+git clone [URL_DEL_REPOSITORIO]
+cd TP-React-PWA
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. Instalar dependencias:
+```bash
+npm install
 ```
+
+3. Iniciar la aplicación en modo desarrollo:
+```bash
+npm run dev
+```
+
+La aplicación estará disponible en `http://localhost:5173`
+
+### Página Principal
+![Página Principal](screenshots/home.png)
+*Vista principal con lista de contenido y filtros*
+
+### Agregar Nuevo Contenido
+![Agregar Contenido](screenshots/new.png)
+*Formulario para agregar nueva película o serie*
+
+### Contenido Visto
+![Contenido Visto](screenshots/visto.png)
+*Lista de contenido marcado como visto*
+
+### Editar Contenido 
+![Editar Contenido](screenshots/editar.png)
+*Edición de contenido*
+
+## 🎯 Características Principales
+
+### Sistema de Filtros
+- Búsqueda por título o director
+- Filtrado por género
+- Filtrado por tipo (película/serie)
+- Ordenamiento por año o rating
+
+### Gestión de Contenido
+- Agregar nuevas películas/series
+- Marcar como visto
+- Editar entradas existentes
+- Eliminar contenido
+
+### Estadísticas
+- Total de contenido
+- Distribución por género
+- Distribución por tipo
+
+## 💾 Persistencia de Datos
+La aplicación utiliza localStorage para mantener los datos guardados incluso después de cerrar el navegador. Los datos se sincronizan automáticamente.
+
+## 🔄 Estado de la Aplicación
+- ✅ Todas las funcionalidades principales implementadas
+- ✅ Interfaz intuitiva y amigable
+- ✅ Persistencia de datos
+- ✅ Manejo de errores
+
+## 🎨 Diseño
+- Interfaz moderna y minimalista
+- Tema oscuro para mejor experiencia visual
+- Animaciones y transiciones suaves
+- Feedback visual para todas las acciones
+
+## 📚 Estructura del Proyecto
+```
+src/
+├── components/     # Componentes reutilizables
+├── pages/         # Páginas principales
+├── types/         # Definiciones de TypeScript
+├── utils/         # Utilidades y helpers
+└── styles/        # Estilos globales
+```
+
+---
+Desarrollado para el [TP-React] de la materia [PWA]
