@@ -1,9 +1,9 @@
 # 🎬 Movie Tracker
 
 ## 👥 Integrantes del Grupo
-- [Hernandez Martín FAI-4433]
-- [Metzger German FAI-3521]
-- [Bucarey Mateo FAI- 4319]
+- Hernandez Martín FAI-4433
+- Metzger German FAI-3521
+- Bucarey Mateo FAI- 4319
 
 ## 📝 Descripción
 Movie Tracker es una aplicación web desarrollada con React que permite gestionar y hacer seguimiento de películas y series. Los usuarios pueden:
