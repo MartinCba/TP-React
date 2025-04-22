@@ -8,6 +8,8 @@
     --color-danger: #f44336;
     --color-text: #FFFFFF;
     --color-text-secondary: rgba(255, 255, 255, 0.7);
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-primary-transparent: rgba(33, 150, 243, 0.2);
     
     /* Colores del navbar */
     --color-navbar: rgba(255, 255, 255, 0.05);

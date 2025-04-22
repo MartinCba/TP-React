@@ -8,13 +8,11 @@ import Toast from '../../components/Toast/Toast';
 import { Content } from '../../types/Content';
 import './styles.css';
 
-// Props que recibe el componente
 type Props = {
-    onAdd: (newMovie: Content) => void; // Función para agregar un nuevo contenido
+    onAdd: (newMovie: Content) => void;
 };
 
 const NewEntry: React.FC<Props> = ({ onAdd }) => {
-    // Estado para almacenar los datos del formulario
     const [formData, setFormData] = useState<Content>({
         id: '',
         titulo: '',
@@ -26,30 +24,21 @@ const NewEntry: React.FC<Props> = ({ onAdd }) => {
         imagen: ''
     });
 
-    // Estado para mostrar notificación tipo toast
     const [toast, setToast] = useState<{ message: string; type?: 'success' | 'error' | 'info' } | null>(null);
-    // Hook para navegar a otra página
     const navigate = useNavigate();
-    // Maneja los cambios en los campos del formulario
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        // Si el campo es año o rating, se convierte a número
         setFormData((prev) => ({
             ...prev,
             [name]: name === 'anio' || name === 'rating' ? Number(value) : value,
         }));
     };
 
-    // Maneja el envío del formulario
     const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault(); // Evita el comportamiento por defecto del formulario
-        // Crea un nuevo contenido con ID generado automáticamente
+        e.preventDefault();
         const newItem = { ...formData, id: uuidv4() };
-        // Llama a la función para agregarlo a la lista
         onAdd(newItem);
-        // Muestra un mensaje de éxito
         setToast({ message: 'Contenido agregado con éxito', type: 'success' });
-        // Espera 1 segundo y redirige al home
         setTimeout(() => {
             navigate('/');
         }, 1000);

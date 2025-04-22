@@ -1,10 +1,9 @@
 import React from 'react';
 import './styles.css';
 
-// Props que recibe el componente
 type Props = {
-    value: string; // Valor actual del input (texto de búsqueda)
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // Función que se ejecuta al escribir
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; 
 };
 
 const SearchBar: React.FC<Props> = ({ value, onChange }) => {

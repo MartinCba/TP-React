@@ -1,20 +1,18 @@
 import React from 'react';
 import './styles.css';
 
-// Tipo de opción: valor que se guarda y etiqueta visible en el select
 type Option = {
     value: string;
     label: string;
 };
 
-// Props que recibe el componente SelectField
 type Props = {
-    label: string; // Texto que se muestra arriba del select
-    name: string; // Atributo name e id del select
-    value: string; // Valor actual seleccionado
-    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void; // Función que se ejecuta al cambiar de opción
-    options: Option[]; // Lista de opciones disponibles para seleccionar
-    required?: boolean; // Define si es obligatorio (opcional, por defecto es false)
+    label: string; 
+    name: string; 
+    value: string; 
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void; 
+    options: Option[]; 
+    required?: boolean; 
 };
 
 const SelectField: React.FC<Props> = ({

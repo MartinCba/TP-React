@@ -2,15 +2,13 @@ import React from 'react';
 import './styles.css';
 import { Content } from '../../types/Content';
 
-// Imagen por defecto si no se carga ninguna imagen
 const DEFAULT_IMAGE = 'https://images.wondershare.com/recoverit/article/2019/11/common-video-errors-01.jpg';
 
-// Props que recibe la tarjeta de contenido
 type Props = {
-    data: Content; // Objeto con los datos del contenido
-    onMarkAsViewed?: () => void; // Función opcional para marcar como visto
-    onDelete: () => void; // Función para eliminar el contenido
-    onEdit?: () => void; // Función opcional para editar el contenido
+    data: Content; 
+    onMarkAsViewed?: () => void; 
+    onDelete: () => void; 
+    onEdit?: () => void; 
 };
 // OBSERVACIONES:
 // - Decidí mantener los botones HTML nativos por las siguientes razones:

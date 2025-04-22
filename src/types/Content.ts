@@ -1,4 +1,4 @@
-// Definición del tipo 'Content' que representa una película o serie
+
 export type Content = {
   id: string; 
   titulo: string;

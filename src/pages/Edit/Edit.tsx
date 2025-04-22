@@ -1,126 +1,150 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Content } from '../../types/Content';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import Title from '../../components/Title/Title';
 import InputField from '../../components/InputField/InputField';
 import SelectField from '../../components/SelectField/SelectField';
-import Title from '../../components/Title/Title';
 import Toast from '../../components/Toast/Toast';
-import './styles.css';
+import { Content } from '../../types/Content';
 import { ToastType } from '../../types/ToastType';
+import './styles.css';
 
-// Definición de las props que recibe el componente Edit
 type Props = {
-    porVer: Content[]; // Lista de contenidos por ver
-    setPorVer: React.Dispatch<React.SetStateAction<Content[]>>; // Función para actualizar la lista porVer
-    watched: Content[]; // Lista de contenidos vistos 
-    setWatched: React.Dispatch<React.SetStateAction<Content[]>>; // Función para actualizar la lista watched
+    porVer: Content[];
+    setPorVer: React.Dispatch<React.SetStateAction<Content[]>>;
+    watched: Content[];
+    setWatched: React.Dispatch<React.SetStateAction<Content[]>>;
 };
 
-// Componente principal Edit
 const Edit: React.FC<Props> = ({ porVer, setPorVer, watched, setWatched }) => {
-    // Extrae el estado enviado por navegación (puede incluir el contenido a editar y desde dónde se navegó)
-    const { state } = useLocation();
-    // Hook para navegar entre páginas
     const navigate = useNavigate();
-    // Contenido a editar, que llega desde el estado de navegación
-    const contentToEdit: Content | null = state?.content || null;
-    // Estado local para manejar el formulario con los datos actuales del contenido
+    const location = useLocation();
+    const state = location.state as { content: Content; from: string } | null;
     const [formData, setFormData] = useState<Content | null>(null);
-    // Estado local para mostrar una notificación (toast)
     const [toast, setToast] = useState<{ message: string; type?: ToastType } | null>(null);
 
-    // Al montar el componente, si hay contenido para editar, se carga en formData
     useEffect(() => {
-        if (contentToEdit) {
-            setFormData(contentToEdit);
+        if (!state?.content) {
+            setToast({ message: 'No se encontró el contenido a editar', type: 'error' });
+            setTimeout(() => navigate('/'), 1000);
+            return;
         }
-    }, [contentToEdit]);
+        setFormData(state.content);
+    }, [state, navigate]);
 
-    // Si no hay datos para editar, se muestra un mensaje de error
-    if (!formData) {
-        return (
-            <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-                <Title text="Error" />
-                <p>No se encontró contenido para editar. Volvé al <a href="/">inicio</a>.</p>
-            </div>
-        );
-    }
-
-    // Función que se ejecuta cada vez que el usuario cambia un valor del formulario
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        if (!formData) return;
         const { name, value } = e.target;
-        // Actualiza el estado del formulario, convirtiendo a número si es año o rating
-        setFormData((prev) =>
-            prev
-                ? {
-                    ...prev,
-                    [name]: name === 'anio' || name === 'rating' ? Number(value) : value,
-                }
-                : prev
-        );
+        setFormData(prev => {
+            if (!prev) return null;
+            return {
+                ...prev,
+                [name]: name === 'anio' || name === 'rating' ? Number(value) : value
+            };
+        });
     };
 
-    // Función que maneja el envío del formulario
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!formData) return;
 
         const updatedItem = formData;
-        // Verifica si el contenido está en porVer
         const inPorVer = porVer.some((item) => item.id === updatedItem.id);
-        // Verifica si está en watched
         const inWatched = watched.some((item) => item.id === updatedItem.id);
 
-        // Actualiza el contenido editado en porVer si corresponde
         if (inPorVer) {
             setPorVer(porVer.map((item) => (item.id === updatedItem.id ? updatedItem : item)));
         }
-        // Actualiza el contenido editado en watched si corresponde
         if (inWatched) {
             setWatched(watched.map((item) => (item.id === updatedItem.id ? updatedItem : item)));
         }
 
-        // Muestra mensaje de éxito
         setToast({ message: 'Cambios guardados', type: 'success' });
-        // Espera 1 segundo y redirige al home o a la lista de vistos según de dónde venimos
         setTimeout(() => {
             const redirectTo = state?.from === 'watched' ? '/watched' : '/';
             navigate(redirectTo);
         }, 1000);
     };
 
+    if (!formData) {
+        return null;
+    }
+
     return (
-        <>
+        <div className="edit-container">
             <Title text="Editar Contenido" />
             <form onSubmit={handleSubmit} className="formulario">
-                <InputField label="Título" type="text" name="titulo" value={formData.titulo} onChange={handleChange} required />
-                <InputField label="Director" type="text" name="director" value={formData.director} onChange={handleChange} required />
-                <InputField label="Año" type="number" name="anio" value={formData.anio} onChange={handleChange} required />
-                <InputField label="Rating" type="number" name="rating" value={formData.rating} onChange={handleChange} required min={1} max={5} />
-                <SelectField
-                    label="Género"
-                    name="genero"
-                    value={formData.genero}
+                <InputField
+                    label="Título"
+                    type="text"
+                    name="titulo"
+                    value={formData.titulo}
                     onChange={handleChange}
                     required
-                    options={[
-                        { value: 'Acción', label: 'Acción' },
-                        { value: 'Comedia', label: 'Comedia' },
-                        { value: 'Drama', label: 'Drama' },
-                        { value: 'Ciencia Ficción', label: 'Ciencia Ficción' },
-                        { value: 'Romance', label: 'Romance' },
-                    ]}
                 />
-                <SelectField
-                    label="Tipo"
-                    name="tipo"
-                    value={formData.tipo}
+                <InputField
+                    label="Director"
+                    type="text"
+                    name="director"
+                    value={formData.director}
                     onChange={handleChange}
-                    options={[
-                        { value: 'pelicula', label: 'Película' },
-                        { value: 'serie', label: 'Serie' },
-                    ]}
+                    required
                 />
+                <InputField
+                    label="Año"
+                    type="number"
+                    name="anio"
+                    value={formData.anio}
+                    onChange={handleChange}
+                    required
+                />
+                <InputField
+                    label="Rating"
+                    type="number"
+                    name="rating"
+                    value={formData.rating}
+                    onChange={handleChange}
+                    required
+                    min={1}
+                    max={5}
+                />
+
+                <div className="select-row">
+                    <SelectField
+                        label="Género"
+                        name="genero"
+                        value={formData.genero}
+                        onChange={handleChange}
+                        required
+                        options={[
+                            { value: 'Acción', label: 'Acción' },
+                            { value: 'Comedia', label: 'Comedia' },
+                            { value: 'Drama', label: 'Drama' },
+                            { value: 'Ciencia Ficción', label: 'Ciencia Ficción' },
+                            { value: 'Romance', label: 'Romance' },
+                        ]}
+                    />
+                    <SelectField
+                        label="Tipo"
+                        name="tipo"
+                        value={formData.tipo}
+                        onChange={handleChange}
+                        options={[
+                            { value: 'pelicula', label: 'Película' },
+                            { value: 'serie', label: 'Serie' },
+                        ]}
+                    />
+                </div>
+
+                <div className="field-full">
+                    <InputField
+                        label="Imagen (opcional)"
+                        type="text"
+                        name="imagen"
+                        value={formData.imagen || ''}
+                        onChange={handleChange}
+                    />
+                </div>
+
                 <div className="submit-container">
                     <button type="submit">Guardar Cambios</button>
                 </div>
@@ -133,7 +157,7 @@ const Edit: React.FC<Props> = ({ porVer, setPorVer, watched, setWatched }) => {
                     onClose={() => setToast(null)}
                 />
             )}
-        </>
+        </div>
     );
 };
 

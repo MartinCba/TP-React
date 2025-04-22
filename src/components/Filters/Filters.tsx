@@ -4,21 +4,18 @@ import SearchBar from '../SearchBar/SearchBar';
 import { Content } from '../../types/Content';
 import './styles.css';
 
-// Props que recibe el componente 
 type Props = {
-    content: Content[]; // Lista de contenidos disponibles
+    content: Content[]; 
     filters: {
-        search: string; // Texto de búsqueda
-        type: string;  // Tipo seleccionado (película o serie)
-        genre: string; // Género seleccionado
+        search: string; 
+        type: string;  
+        genre: string; 
     };
-    onFilterChange: (name: string, value: string) => void; // Función para actualizar cualquier filtro
+    onFilterChange: (name: string, value: string) => void; 
 };
 
 const Filters: React.FC<Props> = ({ content, filters, onFilterChange }) => {
-    // Obtiene los tipos únicos del contenido (película o serie)
     const uniqueTypes = Array.from(new Set(content.map((item) => item.tipo)));
-    // Obtiene los géneros únicos del contenido
     const uniqueGenres = Array.from(new Set(content.map((item) => item.genero)));
 
     return (

@@ -1,0 +1,83 @@
+.content-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.content-list-container .title-section {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.content-list-container .title-section h1 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.content-list-container .title-section p {
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+}
+
+.content-list-container .stats-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.content-list-container .filter-section {
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.content-list-container .section-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+}
+
+.content-list-container .empty-state {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-text-secondary);
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius-md);
+    margin: var(--spacing-xl) 0;
+}
+
+.content-list-container .empty-state p {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-md);
+    font-style: italic;
+    color: var(--color-text-secondary);
+}
+
+.content-list-container .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+    .content-list-container {
+        gap: var(--spacing-md);
+    }
+
+    .content-list-container .title-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .content-list-container .title-section p {
+        font-size: 1rem;
+    }
+
+    .content-list-container .cards-grid {
+        grid-template-columns: 1fr;
+    }
+} 
