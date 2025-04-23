@@ -7,7 +7,7 @@
 .select-group label {
     font-size: 0.9rem;
     color: var(--color-text-secondary);
-}
+} 
 
 .select-group select {
     background-color: var(--color-surface);
