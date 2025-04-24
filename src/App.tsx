@@ -7,6 +7,7 @@ import Edit from './pages/Edit/Edit';
 import Layout from './components/Layout/Layout';
 import { Content } from './types/Content';
 import { storage } from './utils/storage';
+import { mockContent } from './utils/mockData';
 
 function App() {
   const [porVer, setPorVer] = useState<Content[]>([]);
@@ -14,10 +15,11 @@ function App() {
   const [hasLoaded, setHasLoaded] = useState(false);
 
   useEffect(() => {
-    const pv = storage.get<Content[]>('porVer');
-    const wv = storage.get<Content[]>('watched');
-    if (pv) setPorVer(pv);
-    if (wv) setWatched(wv);
+    storage.clear();
+    setPorVer(mockContent);
+    storage.set('porVer', mockContent);
+    setWatched([]);
+    storage.set('watched', []);
     setHasLoaded(true);
   }, []);
 
