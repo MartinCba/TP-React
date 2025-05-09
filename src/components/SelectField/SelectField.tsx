@@ -1,5 +1,5 @@
 import React from 'react';
-import './Styles.css';
+import styles from './SelectField.module.css';
 
 type Option = {
     value: string;
@@ -24,7 +24,7 @@ const SelectField: React.FC<Props> = ({
     required = false,
 }) => {
     return (
-        <div className="select-group">
+        <div className={styles['select-group']}>
             <label htmlFor={name}>{label}</label>
             <select
                 id={name}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css';
+import styles from './SearchBar.module.css';
 
 type Props = {
     value: string;
@@ -8,7 +8,7 @@ type Props = {
 
 const SearchBar: React.FC<Props> = ({ value, onChange }) => {
     return (
-        <div className="search-bar">
+        <div className={styles['search-bar']}>
             <input
                 type="text"
                 value={value}

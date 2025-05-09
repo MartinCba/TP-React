@@ -1,15 +1,15 @@
 import React from 'react';
 import { Popcorn } from 'lucide-react';
 import { Link, Outlet } from 'react-router-dom';
-import './styles.css';
+import styles from './Layout.module.css';
 
 const Layout: React.FC = () => {
     return (
-        <div className="layout">
-            <nav className="navbar">
-                <div className="logo">
+        <div className={styles.layout}>
+            <nav className={styles.navbar}>
+                <div className={styles.logo}>
                     <Popcorn size={24} />
-                    <span className="brand">Movie Tracker</span>
+                    <span className={styles.brand}>Movie Tracker</span>
                 </div>
                 <ul>
                     <li><Link to="/">Home</Link></li>
@@ -18,7 +18,7 @@ const Layout: React.FC = () => {
                 </ul>
             </nav>
 
-            <main className="content">
+            <main className={styles.content}>
                 <Outlet />
             </main>
         </div>

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './styles.css';
+import styles from './Toast.module.css';
 
 type ToastProps = {
     message: string; 
@@ -26,8 +26,8 @@ const Toast: React.FC<ToastProps> = ({ message, type = 'info', onClose }) => {
     };
 
     return (
-        <div className={`toast toast-${type}`}>
-            <span className="toast-icon">{getIcon()}</span>
+        <div className={`${styles.toast} ${styles[`toast-${type}`]}`}>
+            <span className={styles['toast-icon']}>{getIcon()}</span>
             <span>{message}</span>
         </div>
     );

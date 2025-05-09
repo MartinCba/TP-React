@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css';
+import styles from './Button.module.css';
 
 type ButtonProps = {
     text: string; 
@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
     return (
         <button 
-            className={`btn ${variant}`} 
+            className={`${styles.btn} ${styles[variant]}`}
             onClick={onClick}
             type={type}
         >

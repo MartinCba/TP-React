@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Content } from '../../types/Content';
-import './styles.css';
+import styles from './StatsCounter.module.css';
 
 type Props = {
     content: Content[]; 
@@ -27,33 +27,33 @@ const StatsCounter: React.FC<Props> = ({ content, title = 'Estadísticas' }) => 
     }, [content]);
 
     return (
-        <div className="stats-counter">
+        <div className={styles['stats-counter']}>
             <h3>{title}</h3>
-            <div className="stats-grid">
-                <div className="stats-card total">
+            <div className={styles['stats-grid']}>
+                <div className={`${styles['stats-card']} ${styles.total}`}>
                     <h4>Total</h4>
-                    <div className="number">{stats.total}</div>
+                    <div className={styles.number}>{stats.total}</div>
                 </div>
 
-                <div className="stats-card">
+                <div className={styles['stats-card']}>
                     <h4>Por Tipo</h4>
-                    <div className="stats-list">
+                    <div className={styles['stats-list']}>
                         {stats.byType.map(([type, count]) => (
-                            <div key={type} className="stats-item">
+                            <div key={type} className={styles['stats-item']}>
                                 <span>{type}</span>
-                                <span className="number">{count}</span>
+                                <span className={styles.number}>{count}</span>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                <div className="stats-card">
+                <div className={styles['stats-card']}>
                     <h4>Top Géneros</h4>
-                    <div className="stats-list">
+                    <div className={styles['stats-list']}>
                         {stats.byGenre.map(([genre, count]) => (
-                            <div key={genre} className="stats-item">
+                            <div key={genre} className={styles['stats-item']}>
                                 <span>{genre}</span>
-                                <span className="number">{count}</span>
+                                <span className={styles.number}>{count}</span>
                             </div>
                         ))}
                     </div>

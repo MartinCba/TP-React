@@ -6,7 +6,7 @@ import SelectField from '../../components/SelectField/SelectField';
 import Toast from '../../components/Toast/Toast';
 import { Content } from '../../types/Content';
 import { ToastType } from '../../types/ToastType';
-import './styles.css';
+import styles from './Edit.module.css';
 
 type Props = {
     porVer: Content[];
@@ -70,9 +70,9 @@ const Edit: React.FC<Props> = ({ porVer, setPorVer, watched, setWatched }) => {
     }
 
     return (
-        <div className="edit-container">
+        <div className={styles['edit-container']}>
             <Title text="Editar Contenido" />
-            <form onSubmit={handleSubmit} className="formulario">
+            <form onSubmit={handleSubmit} className={styles['formulario']}>
                 <InputField
                     label="Título"
                     type="text"
@@ -107,35 +107,31 @@ const Edit: React.FC<Props> = ({ porVer, setPorVer, watched, setWatched }) => {
                     min={1}
                     max={5}
                 />
-
-                <div className="select-row">
-                    <SelectField
-                        label="Género"
-                        name="genero"
-                        value={formData.genero}
-                        onChange={handleChange}
-                        required
-                        options={[
-                            { value: 'Acción', label: 'Acción' },
-                            { value: 'Comedia', label: 'Comedia' },
-                            { value: 'Drama', label: 'Drama' },
-                            { value: 'Ciencia Ficción', label: 'Ciencia Ficción' },
-                            { value: 'Romance', label: 'Romance' },
-                        ]}
-                    />
-                    <SelectField
-                        label="Tipo"
-                        name="tipo"
-                        value={formData.tipo}
-                        onChange={handleChange}
-                        options={[
-                            { value: 'pelicula', label: 'Película' },
-                            { value: 'serie', label: 'Serie' },
-                        ]}
-                    />
-                </div>
-
-                <div className="field-full">
+                <SelectField
+                    label="Género"
+                    name="genero"
+                    value={formData.genero}
+                    onChange={handleChange}
+                    required
+                    options={[
+                        { value: 'Acción', label: 'Acción' },
+                        { value: 'Comedia', label: 'Comedia' },
+                        { value: 'Drama', label: 'Drama' },
+                        { value: 'Ciencia Ficción', label: 'Ciencia Ficción' },
+                        { value: 'Romance', label: 'Romance' },
+                    ]}
+                />
+                <SelectField
+                    label="Tipo"
+                    name="tipo"
+                    value={formData.tipo}
+                    onChange={handleChange}
+                    options={[
+                        { value: 'pelicula', label: 'Película' },
+                        { value: 'serie', label: 'Serie' },
+                    ]}
+                />
+                <div className={styles['field-full']}>
                     <InputField
                         label="Imagen (opcional)"
                         type="text"
@@ -144,12 +140,10 @@ const Edit: React.FC<Props> = ({ porVer, setPorVer, watched, setWatched }) => {
                         onChange={handleChange}
                     />
                 </div>
-
-                <div className="submit-container">
+                <div className={styles['submit-container']}>
                     <button type="submit">Guardar Cambios</button>
                 </div>
             </form>
-
             {toast && (
                 <Toast
                     message={toast.message}

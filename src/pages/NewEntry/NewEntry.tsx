@@ -6,7 +6,7 @@ import InputField from '../../components/InputField/InputField';
 import SelectField from '../../components/SelectField/SelectField';
 import Toast from '../../components/Toast/Toast';
 import { Content } from '../../types/Content';
-import './styles.css';
+import styles from './NewEntry.module.css';
 
 type Props = {
     onAdd: (newMovie: Content) => void;
@@ -45,9 +45,9 @@ const NewEntry: React.FC<Props> = ({ onAdd }) => {
     };
 
     return (
-        <div className="content-container">
+        <div className={styles['content-container']}>
             <Title text="Agregar Nueva Película o Serie" />
-            <form onSubmit={handleSubmit} className="formulario">
+            <form onSubmit={handleSubmit} className={styles['formulario']}>
                 <InputField
                     label="Título"
                     type="text"
@@ -82,35 +82,31 @@ const NewEntry: React.FC<Props> = ({ onAdd }) => {
                     min={1}
                     max={5}
                 />
-
-                <div className="select-row">
-                    <SelectField
-                        label="Género"
-                        name="genero"
-                        value={formData.genero}
-                        onChange={handleChange}
-                        required
-                        options={[
-                            { value: 'Acción', label: 'Acción' },
-                            { value: 'Comedia', label: 'Comedia' },
-                            { value: 'Drama', label: 'Drama' },
-                            { value: 'Ciencia Ficción', label: 'Ciencia Ficción' },
-                            { value: 'Romance', label: 'Romance' },
-                        ]}
-                    />
-                    <SelectField
-                        label="Tipo"
-                        name="tipo"
-                        value={formData.tipo}
-                        onChange={handleChange}
-                        options={[
-                            { value: 'pelicula', label: 'Película' },
-                            { value: 'serie', label: 'Serie' },
-                        ]}
-                    />
-                </div>
-
-                <div className="field-full">
+                <SelectField
+                    label="Género"
+                    name="genero"
+                    value={formData.genero}
+                    onChange={handleChange}
+                    required
+                    options={[
+                        { value: 'Acción', label: 'Acción' },
+                        { value: 'Comedia', label: 'Comedia' },
+                        { value: 'Drama', label: 'Drama' },
+                        { value: 'Ciencia Ficción', label: 'Ciencia Ficción' },
+                        { value: 'Romance', label: 'Romance' },
+                    ]}
+                />
+                <SelectField
+                    label="Tipo"
+                    name="tipo"
+                    value={formData.tipo}
+                    onChange={handleChange}
+                    options={[
+                        { value: 'pelicula', label: 'Película' },
+                        { value: 'serie', label: 'Serie' },
+                    ]}
+                />
+                <div className={styles['field-full']}>
                     <InputField
                         label="Imagen (opcional)"
                         type="text"
@@ -119,12 +115,10 @@ const NewEntry: React.FC<Props> = ({ onAdd }) => {
                         onChange={handleChange}
                     />
                 </div>
-
-                <div className="submit-container">
+                <div className={styles['submit-container']}>
                     <button type="submit">Agregar</button>
                 </div>
             </form>
-
             {toast && (
                 <Toast
                     message={toast.message}

@@ -2,7 +2,7 @@ import React from 'react';
 import SelectField from '../SelectField/SelectField';
 import SearchBar from '../SearchBar/SearchBar';
 import { Content } from '../../types/Content';
-import './styles.css';
+import styles from './Filters.module.css';
 
 type Props = {
     content: Content[]; 
@@ -19,9 +19,9 @@ const Filters: React.FC<Props> = ({ content, filters, onFilterChange }) => {
     const uniqueGenres = Array.from(new Set(content.map((item) => item.genero)));
 
     return (
-        <div className="filters-container">
-            <div className="filters">
-                <div className="filters-left">
+        <div className={styles['filters-container']}>
+            <div className={styles.filters}>
+                <div className={styles['filters-left']}>
                     <SelectField
                         label="Género"
                         name="genre"
@@ -37,7 +37,7 @@ const Filters: React.FC<Props> = ({ content, filters, onFilterChange }) => {
                         options={uniqueTypes.map((type) => ({ value: type, label: type }))}
                     />
                 </div>
-                <div className="filters-right">
+                <div className={styles['filters-right']}>
                     <SearchBar
                         value={filters.search}
                         onChange={(e) => onFilterChange('search', e.target.value)}

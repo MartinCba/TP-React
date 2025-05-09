@@ -1,7 +1,7 @@
 import React from 'react';
 import SelectField from '../SelectField/SelectField';
 import SearchBar from '../SearchBar/SearchBar';
-import './styles.css';
+import styles from './FilterSection.module.css';
 
 type FilterSectionProps = {
     searchQuery: string; 
@@ -50,9 +50,9 @@ const FilterSection: React.FC<FilterSectionProps> = ({
     };
 
     return (
-        <div className="filters-container">
-            <div className="filters">
-                <div className="filters-left">
+        <div className={styles['filters-container']}>
+            <div className={styles.filters}>
+                <div className={styles['filters-left']}>
                     <SelectField
                         label="Género"
                         name="genre"
@@ -67,7 +67,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                         onChange={(e) => onTypeChange(e.target.value)}
                         options={typeOptions}
                     />
-                    <div className="sort-group">
+                    <div className={styles['sort-group']}>
                         <SelectField
                             label="Ordenar"
                             name="sortBy"
@@ -76,7 +76,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                             options={sortOptions}
                         />
                         <button
-                            className="sort-order-button"
+                            className={styles['sort-order-button']}
                             onClick={toggleSortOrder}
                             title={`Orden ${sortOrder === 'asc' ? 'ascendente' : 'descendente'}`}
                         >
@@ -84,7 +84,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
                         </button>
                     </div>
                 </div>
-                <div className="filters-right">
+                <div className={styles['filters-right']}>
                     <SearchBar
                         value={searchQuery}
                         onChange={(e) => onSearchChange(e.target.value)}

@@ -5,7 +5,7 @@ import Toast from '../../components/Toast/Toast';
 import ContentList from '../../components/ContentList/ContentList';
 import { Content } from '../../types/Content';
 import { storage } from '../../utils/storage';
-import './styles.css';
+import styles from './Home.module.css';
 import { ToastType } from '../../types/ToastType';
 
 type Props = {
@@ -39,8 +39,8 @@ const Home: React.FC<Props> = ({ porVer, setPorVer, setWatched }) => {
     };
 
     return (
-        <div className="home-container">
-            <div className="header-actions">
+        <div className={styles['home-container']}>
+            <div className={styles['header-actions']}>
                 <Button text="Agregar Nuevo" variant="primary" onClick={() => navigate('/new')} />
                 <Button text="Resetear App" variant="danger" onClick={handleReset} />
             </div>

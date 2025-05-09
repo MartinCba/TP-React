@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css';
+import styles from './InputField.module.css';
 
 type InputFieldProps = {
     label: string; 
@@ -25,7 +25,7 @@ const InputField: React.FC<InputFieldProps> = ({
     placeholder,
 }) => {
     return (
-        <div className="input-group">
+        <div className={styles['input-group']}>
             <label htmlFor={name}>{label}</label>
             <input
                 type={type}

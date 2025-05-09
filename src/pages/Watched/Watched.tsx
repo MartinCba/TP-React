@@ -3,7 +3,7 @@ import Toast from '../../components/Toast/Toast';
 import ContentList from '../../components/ContentList/ContentList';
 import { Content } from '../../types/Content';
 import { ToastType } from '../../types/ToastType';
-import './styles.css';
+import styles from './Watched.module.css';
 
 type Props = {
     watched: Content[];
@@ -19,7 +19,7 @@ const Watched: React.FC<Props> = ({ watched, setWatched }) => {
     };
 
     return (
-        <div className="watched-container">
+        <div className={styles['watched-container']}>
             <ContentList
                 content={watched}
                 title="Contenido Visto"

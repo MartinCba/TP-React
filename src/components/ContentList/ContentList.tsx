@@ -6,7 +6,7 @@ import FilterSection from '../FilterSection/FilterSection';
 import StatsCounter from '../StatsCounter/StatsCounter';
 import { Content } from '../../types/Content';
 import { useContentFilter } from '../../hooks/useContentFilter';
-import './styles.css';
+import styles from './ContentList.module.css';
 
 interface ContentListProps {
     content: Content[];
@@ -46,7 +46,7 @@ const ContentList: React.FC<ContentListProps> = ({
     };
 
     const renderEmptyState = () => (
-        <div className="empty-state">
+        <div className={styles['empty-state']}>
             <p>
                 {content.length === 0
                     ? emptyStateMessage
@@ -63,7 +63,7 @@ const ContentList: React.FC<ContentListProps> = ({
     );
 
     const renderContentGrid = () => (
-        <div className="cards-grid">
+        <div className={styles['cards-grid']}>
             {filteredContent.map((item) => (
                 <ContentCard
                     key={item.id}
@@ -77,17 +77,17 @@ const ContentList: React.FC<ContentListProps> = ({
     );
 
     return (
-        <div className="content-list-container">
-            <div className="title-section">
+        <div className={styles['content-list-container']}>
+            <div className={styles['title-section']}>
                 <h1>{title}</h1>
                 <p>{subtitle}</p>
             </div>
 
-            <div className="stats-section">
+            <div className={styles['stats-section']}>
                 <StatsCounter content={content} title={`Estadísticas - ${title}`} />
             </div>
 
-            <div className="filter-section">
+            <div className={styles['filter-section']}>
                 <FilterSection
                     searchQuery={filterState.searchQuery}
                     selectedGenre={filterState.selectedGenre}
@@ -105,7 +105,7 @@ const ContentList: React.FC<ContentListProps> = ({
                 />
             </div>
 
-            <h2 className="section-title">{title}</h2>
+            <h2 className={styles['section-title']}>{title}</h2>
 
             {filteredContent.length === 0 ? renderEmptyState() : renderContentGrid()}
         </div>

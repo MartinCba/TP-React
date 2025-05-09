@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css';
+import styles from './ContentCard.module.css';
 import { Content } from '../../types/Content';
 
 const DEFAULT_IMAGE = 'https://images.wondershare.com/recoverit/article/2019/11/common-video-errors-01.jpg';
@@ -17,45 +17,45 @@ type Props = {
 // 3. El componente Button está más orientado a botones de acción principales sin íconos.
 const ContentCard: React.FC<Props> = ({ data, onMarkAsViewed, onDelete, onEdit }) => {
     return (
-        <div className="content-card">
-            <div className="content-card-header">
+        <div className={styles['content-card']}>
+            <div className={styles['content-card-header']}>
                 <div
-                    className="content-card-image"
+                    className={styles['content-card-image']}
                     style={{
                         backgroundImage: `url(${data.imagen || DEFAULT_IMAGE})`
                     }}
                 />
-                <div className="content-overlay">
-                    <div className="type-badge">{data.tipo}</div>
-                    <div className="rating">
-                        <span className="star">★</span>
+                <div className={styles['content-overlay']}>
+                    <div className={styles['type-badge']}>{data.tipo}</div>
+                    <div className={styles['rating']}>
+                        <span className={styles['star']}>★</span>
                         <span>{data.rating}/5</span>
                     </div>
                 </div>
             </div>
-            <div className="content-card-info">
-                <div className="content-main">
+            <div className={styles['content-card-info']}>
+                <div className={styles['content-main']}>
                     <h3>{data.titulo}</h3>
-                    <div className="content-details">
+                    <div className={styles['content-details']}>
                         <p><strong>Director:</strong> {data.director}</p>
                         <p><strong>Año:</strong> {data.anio}</p>
                     </div>
                 </div>
-                <div className="actions">
+                <div className={styles['actions']}>
                     {onMarkAsViewed && (
-                        <button className="action-button primary" onClick={onMarkAsViewed}>
-                            <span className="button-icon">✓</span>
+                        <button className={`${styles['action-button']} ${styles['primary']}`} onClick={onMarkAsViewed}>
+                            <span className={styles['button-icon']}>✓</span>
                             Visto
                         </button>
                     )}
                     {onEdit && (
-                        <button className="action-button secondary" onClick={onEdit}>
-                            <span className="button-icon">✎</span>
+                        <button className={`${styles['action-button']} ${styles['secondary']}`} onClick={onEdit}>
+                            <span className={styles['button-icon']}>✎</span>
                             Editar
                         </button>
                     )}
-                    <button className="action-button danger" onClick={onDelete}>
-                        <span className="button-icon">×</span>
+                    <button className={`${styles['action-button']} ${styles['danger']}`} onClick={onDelete}>
+                        <span className={styles['button-icon']}>×</span>
                         Eliminar
                     </button>
                 </div>
