@@ -1,3 +1,19 @@
+Correcciones:
+- Buen readme. Completo y prolijo.
+- Codigo bien estilado, de gran calidad.
+- Buen uso de componentes y buena estructura de proyectos. Reutilizables, pequenos y especificos.
+- Buen uso de local storage.
+- Buen uso de useState y useEffect.
+- Loading states y mensajes de error.
+- Buen uso de hooks personalizados.
+- Navegacion
+
+Observaciones:
+- Borren imagenes que se generan por default antes de entregar.
+
+Nota: 10.
+
+
 # 🎬 Movie Tracker
 
 ## 👥 Integrantes del Grupo
